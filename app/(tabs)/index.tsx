@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, View, Text, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Platform, View, Text, TouchableOpacity, Button, Pressable } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -6,42 +6,31 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useState } from 'react';
 import Ecommerce from './ecommerce';
+import { NavigationContainer, NavigationProp, useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Screen1 from './screen1';
 
+const Stack = createNativeStackNavigator();
 
 export default function HomeScreen() {
-  const [price, setPrice] = useState(141800);
-  const [quantity, setQuantity] = useState(0);
-
-  const formatPrice = (price: number): string => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price).replace('₫', 'đ');
-  };
-
-  const handleDecrease = () => {
-    setQuantity(quantity > 0 ? quantity - 1 : 0);
-  }
-
-  const handleIncrease = () => {
-    setQuantity(quantity >= 0 ? quantity + 1 : 0);
-  }
-
   return (
-    // <View style={styles.mainContainer}>
-    //   <View style={styles.circle}>
-    //   </View>
-    //   <Text style={styles.mainTitle}>GROW YOUR BUSINESS</Text>
-    //   <Text style={styles.secondTitle}>We will help you to grow your business using online server</Text>
-    // <View style={styles.rowButton}>
-    //     <ThemedView style={styles.button}>
-    //       <ThemedText style={styles.buttonText}>LOGIN</ThemedText>
-    //     </ThemedView>
-
-    //     <ThemedView style={styles.button}>
-    //       <ThemedText style={styles.buttonText}>SIGN UP</ThemedText>
-    //     </ThemedView>
-    // </View>
-    // </View>
-    <Ecommerce></Ecommerce>
+      <NavigationContainer independent={true}>
+        <Stack.Navigator initialRouteName='Ecommerce'>
+          <Stack.Screen name='Ecommerce' component={ScreenChange}/>
+          <Stack.Screen name='screen1' component={Screen1}/>
+        </Stack.Navigator>
+      </NavigationContainer>
   );
+}
+
+function ScreenChange () {
+  const navigation:NavigationProp<RootStackParamList> = useNavigation();
+  return (
+    <View>
+      <Text>Ecommerce</Text>
+      <TouchableOpacity onPress={() => {navigation.push}}><Text> abc</Text></TouchableOpacity>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
