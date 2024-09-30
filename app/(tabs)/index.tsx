@@ -6,29 +6,75 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useState } from 'react';
 import Ecommerce from './ecommerce';
-import { NavigationContainer, NavigationProp, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer, NavigationProp, TabRouter, useNavigation, useNavigationBuilder } from '@react-navigation/native';
+import { createNativeStackNavigator, NativeStackHeaderProps } from '@react-navigation/native-stack';
 import Screen1 from './screen1';
+import Screen2 from './screen2';
+import Screen3 from './screen3';
+import Screen4 from './screen4';
+import Screen5 from './screen5';
+import Screen6 from './screen6';
+import Screen7 from './screen7';
+import Screen8 from './screen8';
+import Screen2_1 from './screen2_1';
+import Screen4_a from './screen4_a';
+import { RootStackParamList } from '@/types/route';
 
 const Stack = createNativeStackNavigator();
 
-export default function HomeScreen() {
+const CustomHeader = ({ navigation, route, options }: NativeStackHeaderProps) => {
   return (
-      <NavigationContainer independent={true}>
-        <Stack.Navigator initialRouteName='Ecommerce'>
-          <Stack.Screen name='Ecommerce' component={ScreenChange}/>
-          <Stack.Screen name='screen1' component={Screen1}/>
+    <View style={{marginTop: 30}}>
+      <TouchableOpacity onPress={() => navigation.goBack()}><Text>Back</Text></TouchableOpacity>
+      <Text >{route.name}</Text>
+    </View>
+  );
+};
+
+export default function HomeScreen() {
+
+  return (
+    <View style={{ flex: 1, marginTop: -32 }}>
+
+      <NavigationContainer independent={true} >
+        <Stack.Navigator initialRouteName='HomePage' screenOptions={{ header: (props) => <CustomHeader {...props} /> }}>
+          <Stack.Screen name="HomePage" component={Homapage} />
+          <Stack.Screen name='Screen1' component={Screen1} />
+          <Stack.Screen name='Screen2' component={Screen2} />
+          <Stack.Screen name='Screen3' component={Screen3} />
+          <Stack.Screen name='Screen4' component={Screen4} />
+          <Stack.Screen name='Screen5' component={Screen5} />
+          <Stack.Screen name='Screen6' component={Screen6} />
+          <Stack.Screen name='Screen7' component={Screen7} />
+          <Stack.Screen name='Screen8' component={Screen8} />
+          <Stack.Screen name='Screen2_1' component={Screen2_1} />
+          <Stack.Screen name='Ecommerce' component={Ecommerce} />
+          <Stack.Screen name='Screen4_a' component={Screen4_a} />
+
         </Stack.Navigator>
       </NavigationContainer>
+
+    </View>
   );
 }
 
-function ScreenChange () {
-  const navigation:NavigationProp<RootStackParamList> = useNavigation();
+function Homapage() {
+  const navigation: NavigationProp<RootStackParamList> = useNavigation();
   return (
-    <View>
-      <Text>Ecommerce</Text>
-      <TouchableOpacity onPress={() => {navigation.push}}><Text> abc</Text></TouchableOpacity>
+    <View style={[styles.mainContainer, { backgroundColor: "white" }]}>
+      <TouchableOpacity style={styles.buttonDescrete} ><Text style={styles.buttonText}>Homepage</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen1") }}><Text style={styles.buttonText}>Screen1</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2") }}><Text style={styles.buttonText}>Screen2</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3") }}><Text style={styles.buttonText}>Screen3</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4") }}><Text style={styles.buttonText}>Screen4</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen5") }}><Text style={styles.buttonText}>Screen5</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen6") }}><Text style={styles.buttonText}>Screen6</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen7") }}><Text style={styles.buttonText}>Screen7</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen8") }}><Text style={styles.buttonText}>Screen8</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_1") }}><Text style={styles.buttonText}>Screen2_1</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Ecommerce") }}><Text style={styles.buttonText}>Ecommerce</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_a") }}><Text style={styles.buttonText}>Screen4_a</Text></TouchableOpacity>
+
     </View>
   )
 }
@@ -42,7 +88,6 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flex: 1,
-    paddingTop: 30,
     backgroundColor: "rgba(196, 196, 196, 1)",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -91,13 +136,18 @@ const styles = StyleSheet.create({
     gap: 10
   },
   buttonDescrete: {
-    backgroundColor: "rgba(196, 196, 196, 1)",
+    backgroundColor: "green",
+    color: "white",
     borderRadius: 5,
+    width: "70%",
     paddingHorizontal: 10,
-    paddingVertical: 5
+    paddingVertical: 5,
+    alignItems: "center",
+    justifyContent: "center",
+
   },
   buttonText: {
-    color: "black",
+    color: "white",
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center"
