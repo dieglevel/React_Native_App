@@ -7,7 +7,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { useState } from 'react';
 
 
-export default function Ecommerce() {
+export default function Screen2_c() {
     const [price, setPrice] = useState(141800);
     const [quantity, setQuantity] = useState(0);
 

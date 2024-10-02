@@ -1,42 +1,52 @@
+import { camera, start, usb } from "@/assets/images";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Image, SafeAreaView, StyleSheet, Text, Touchable, TouchableOpacity, View } from "react-native";
 import { TextInput } from "react-native-paper";
 
-const Screen2_1 = () => {
+const Screen2_b = () => {
     const [text, onChangeText] = React.useState('Useless Text');
     const [number, onChangeNumber] = React.useState('');
 
     return (
-        <LinearGradient colors={['#rgba(251,203,0,1))', '#rgba(191,154,0,1)']} style={styles.mainContainer}>
-            <Text style={styles.mainTitle}>LOGIN</Text>
-
-            <View style={styles.columnButton}>
-
-                <View style={styles.input}>
-                    <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 10 }}>
-                        <Image source={require("@/assets/images/avatar_user 1.png")} style={{ width: 25, height: 25 }}></Image>
-                        <Text style={styles.textInput}>Username</Text>
-                    </View>
-                    <Image source={require("@/assets/images/eye 1.png")}></Image>
-                </View>
-
-                <View style={styles.input}>
-                    <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 10 }}>
-                        <Image source={require("@/assets/images/Group.png")} style={{ width: 25, height: 25 }}></Image>
-                        <Text style={styles.textInput}>Password</Text>
-                    </View>
-                    <Image source={require("@/assets/images/eye 1.png")}></Image>
-                </View>
-                <ThemedView style={{ width: "80%", alignContent: "center", paddingHorizontal: 16, padding: 8, backgroundColor: "black" }}>
-                    <ThemedText style={styles.buttonText}>SIGN UP</ThemedText>
-                </ThemedView>
-                <Text style={styles.mainTitle}>Forgot your password?</Text>
-
+        <View style={styles.mainContainer}>
+            <View style={{ flexDirection: "row", }}>
+                <Image source={usb}></Image>
+                <Text style={{ fontSize: 20, fontWeight: "bold" }}>USB Bluetooth Music Receiver HJX-001- Biến loa thường thành loa bluetooth</Text>
             </View>
-        </LinearGradient>
+
+            <Text>Cực kỳ hài lòng</Text>
+
+            <View style={{ flexDirection: "row", gap: 10 }}>
+                <Image source={start} />
+                <Image source={start} />
+                <Image source={start} />
+                <Image source={start} />
+                <Image source={start} />
+            </View>
+
+            <TouchableOpacity style={{flexDirection: "row", alignItems: "center", gap: 10, borderWidth: 1, paddingHorizontal: 60, paddingVertical: 10, borderRadius: 10}}>
+                <Image source={camera} />
+                <Text style={{fontSize: 20, fontWeight: "700",}}>Thêm hình ảnh</Text>
+            </TouchableOpacity>
+
+            <View style={styles.textAreaContainer} >
+                <TextInput
+                    style={styles.textArea}
+                    underlineColorAndroid="transparent"
+                    placeholder="Hãy chi sẻ những điều mà bạn thích về sản phẩm"
+                    placeholderTextColor="grey"
+                    numberOfLines={10}
+                    multiline={true}
+                />
+            </View>
+
+            <TouchableOpacity style={{width:"100%" , flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 10, borderWidth: 1, paddingHorizontal: 60, paddingVertical: 10, borderRadius: 10, backgroundColor: "#0D5DB6" }}>
+                <Text style={{ fontSize: 20, fontWeight: "700",color: "white" }}>GỬI</Text>
+            </TouchableOpacity>
+        </View>
 
 
 
@@ -46,10 +56,11 @@ const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
         paddingTop: 30,
-        justifyContent: "center",
-        alignItems: "flex-start",
-        gap: 0,
-        paddingHorizontal: 30
+        justifyContent: "flex-start",
+        alignItems: "center",
+        gap: 30,
+        paddingHorizontal: 30,
+        backgroundColor: "white"
 
     },
     divImage: {
@@ -98,20 +109,20 @@ const styles = StyleSheet.create({
         flex: 1,
         width: "100%"
     },
-    input: {
+    textAreaContainer: {
+        flex: 1,
+        borderColor: "gray",
+        width: "100%",
         borderWidth: 1,
-        borderColor: "white",
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: 400,
-        height: 54,
-        paddingHorizontal: 20,
-        backgroundColor: "rgba(196, 196, 196, 0.3)",
+        padding: 5,
+        maxHeight: 150
     },
-    textInput: {
-        fontSize: 18,
+    textArea: {
+        
+        backgroundColor: "white",
+        borderBottomWidth: 0,
+        justifyContent: "flex-start"
     }
 
 });
-export default Screen2_1;
+export default Screen2_b;

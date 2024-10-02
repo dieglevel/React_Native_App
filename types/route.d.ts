@@ -1,23 +1,27 @@
 type RootStackParamList = {
-  Ecommerce: undefined;
-  Screen1: undefined;
-  Screen2: undefined;
-  Screen3: undefined;
-  Screen4: undefined;
-  Screen5: undefined;
-  Screen6: undefined;
-  Screen7: undefined;
-  Screen8: undefined;
-  Screen2_a: undefined;
-  Homepage: undefined;
-  Screen4_a: undefined;
+     Homepage: undefined;
+     Screen1: undefined;
+     Screen2: undefined;
+     Screen3: undefined;
+     Screen4: undefined;
+     Screen5: undefined;
+     Screen6: undefined;
+     Screen7: undefined;
+     Screen8: undefined;
+
+     Screen2_a: undefined;
+     Screen2_b: undefined;
+     Screen2_c: undefined;
+     Screen2_d: undefined;
+
+     Screen4_a: undefined;
 };
 
-
 declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList { }
-  }
+     namespace ReactNavigation {
+          interface RootParamList
+               extends RootStackParamList {}
+     }
 }
 
 export type HomeScreenNavigationProp =
