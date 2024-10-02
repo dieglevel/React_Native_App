@@ -8,7 +8,7 @@ type RootStackParamList = {
   Screen6: undefined;
   Screen7: undefined;
   Screen8: undefined;
-  Screen2_1: undefined;
+  Screen2_a: undefined;
   Homepage: undefined;
   Screen4_a: undefined;
 };

@@ -1,10 +1,5 @@
 import { Image, StyleSheet, Platform, View, Text, TouchableOpacity, Button, Pressable } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { useState } from 'react';
 import Ecommerce from './ecommerce';
 import { NavigationContainer, NavigationProp, TabRouter, useNavigation, useNavigationBuilder } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackHeaderProps } from '@react-navigation/native-stack';
@@ -16,9 +11,9 @@ import Screen5 from './screen5';
 import Screen6 from './screen6';
 import Screen7 from './screen7';
 import Screen8 from './screen8';
-import Screen2_1 from './screen2_1';
 import Screen4_a from './screen4_a';
 import { RootStackParamList } from '@/types/route';
+import Screen2_a from './screen2_a';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,7 +42,7 @@ export default function HomeScreen() {
           <Stack.Screen name='Screen6' component={Screen6} />
           <Stack.Screen name='Screen7' component={Screen7} />
           <Stack.Screen name='Screen8' component={Screen8} />
-          <Stack.Screen name='Screen2_1' component={Screen2_1} />
+          <Stack.Screen name='Screen2_a' component={Screen2_a} />
           <Stack.Screen name='Ecommerce' component={Ecommerce} />
           <Stack.Screen name='Screen4_a' component={Screen4_a} />
 
@@ -71,7 +66,7 @@ function Homapage() {
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen6") }}><Text style={styles.buttonText}>Screen6</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen7") }}><Text style={styles.buttonText}>Screen7</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen8") }}><Text style={styles.buttonText}>Screen8</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_1") }}><Text style={styles.buttonText}>Screen2_1</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_a") }}><Text style={styles.buttonText}>Screen2_a</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Ecommerce") }}><Text style={styles.buttonText}>Ecommerce</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_a") }}><Text style={styles.buttonText}>Screen4_a</Text></TouchableOpacity>
 

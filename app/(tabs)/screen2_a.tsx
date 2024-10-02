@@ -5,7 +5,7 @@ import React from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-paper";
 
-const Screen2_1 = () => {
+const Screen2_a = () => {
     const [text, onChangeText] = React.useState('Useless Text');
     const [number, onChangeNumber] = React.useState('');
 
@@ -33,24 +33,7 @@ const Screen2_1 = () => {
                 <ThemedView style={{ width: "80%", alignContent: "center", paddingHorizontal: 16, padding: 8, backgroundColor: "black" }}>
                     <ThemedText style={styles.buttonText}>SIGN UP</ThemedText>
                 </ThemedView>
-
-                <SafeAreaView>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={onChangeText}
-                        value={text}
-                        left={<TextInput.Icon icon={"eye"}></TextInput.Icon>}
-                    />
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={onChangeNumber}
-                        value={number}
-                        placeholder="useless placeholder"
-                        keyboardType="numeric"
-                    />
-                </SafeAreaView>
-                
-                <Text style={styles.mainTitle}>CREATE ACCOUNT</Text>
+                <Text style={styles.mainTitle}>Forgot your password?</Text>
 
             </View>
         </LinearGradient>
@@ -131,4 +114,4 @@ const styles = StyleSheet.create({
     }
 
 });
-export default Screen2_1;
+export default Screen2_a;
