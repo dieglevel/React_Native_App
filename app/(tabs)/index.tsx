@@ -4,23 +4,25 @@ import { NavigationContainer, NavigationProp, TabRouter, useNavigation, useNavig
 import { createNativeStackNavigator, NativeStackHeaderProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '@/types/route';
 
-import Screen1 from './screen1';
-import Screen2 from './screen2';
-import Screen3 from './screen3';
-import Screen4 from './screen4';
-import Screen5 from './screen5';
-import Screen6 from './screen6';
-import Screen7 from './screen7';
-import Screen8 from './screen8';
+import Screen1 from './lab_1/screen1';
+import Screen2 from './lab_1/screen2';
+import Screen3 from './lab_1/screen3';
+import Screen4 from './lab_1/screen4';
+import Screen5 from './lab_1/screen5';
+import Screen6 from './lab_1/screen6';
+import Screen7 from './lab_1/screen7';
+import Screen8 from './lab_1/screen8';
 
-import Screen2_a from './screen2_a';
-import Screen2_b from './screen2_b';
-import Screen2_c from './screen2_c';
-import Screen2_d from './screen2_d';
+import Screen2_a from './lab_2/screen2_a';
+import Screen2_b from './lab_2/screen2_b';
+import Screen2_c from './lab_2/screen2_c';
+import Screen2_d from './lab_2/screen2_d';
 
 import Screen4_a from './screen4_a';
+import Screen3_Detail from './lab_3/screen3_detail';
+import Screen3_Choice from './lab_3/screen3_choice';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const CustomHeader = ({ navigation, route, options }: NativeStackHeaderProps) => {
   return (
@@ -37,8 +39,8 @@ export default function HomeScreen() {
     <View style={{ flex: 1, marginTop: -32 }}>
 
       <NavigationContainer independent={true} >
-        <Stack.Navigator initialRouteName='Screen2_d' screenOptions={{ header: (props) => <CustomHeader {...props} />}}>
-          <Stack.Screen name="HomePage" component={Homapage} />
+        <Stack.Navigator initialRouteName='Homepage' screenOptions={{ header: (props) => <CustomHeader {...props} />}}>
+          <Stack.Screen name="Homepage" component={Homapage} />
           <Stack.Screen name='Screen1' component={Screen1} />
           <Stack.Screen name='Screen2' component={Screen2} />
           <Stack.Screen name='Screen3' component={Screen3} />
@@ -52,6 +54,9 @@ export default function HomeScreen() {
           <Stack.Screen name='Screen2_b' component={Screen2_b} />
           <Stack.Screen name='Screen2_c' component={Screen2_c} />
           <Stack.Screen name='Screen2_d' component={Screen2_d} />
+
+          <Stack.Screen name='Screen3_detail' component={Screen3_Detail}/>
+          <Stack.Screen name='Screen3_choice' component={Screen3_Choice} />
 
           <Stack.Screen name='Screen4_a' component={Screen4_a} />
 
@@ -79,6 +84,7 @@ function Homapage() {
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_b") }}><Text style={styles.buttonText}>Screen2_b</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_c") }}><Text style={styles.buttonText}>Screen2_c</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_d") }}><Text style={styles.buttonText}>Screen2_d</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3_detail", {choice: "vs_blue"}) }}><Text style={styles.buttonText}>Screen3_detail</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_a") }}><Text style={styles.buttonText}>Screen4_a</Text></TouchableOpacity>
 
     </View>

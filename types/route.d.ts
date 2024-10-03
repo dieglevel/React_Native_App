@@ -14,6 +14,9 @@ type RootStackParamList = {
      Screen2_c: undefined;
      Screen2_d: undefined;
 
+     Screen3_detail: {choice: String };
+     Screen3_choice: {choice: String };
+
      Screen4_a: undefined;
 };
 
