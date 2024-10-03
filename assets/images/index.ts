@@ -8,3 +8,11 @@ export const vs_blue = require('./vs_blue.png');
 export const vs_silver = require('./vs_silver.png');
 export const vs_red = require('./vs_red.png');
 export const question = require('./Group 1.png');
+
+export const ca_nau_lau= require('./ca_nau_lau.png');
+export const do_choi_dang_mo_hinh= require('./do_choi_dang_mo_hinh.png');
+export const ga_bo_toi= require('./ga_bo_toi.png');
+export const hieu_long_con_tre = require("./hieu_long_con_tre.png");
+export const lanh_dao_gian_don= require('./lanh_dao_gian_don.png');
+export const xa_can_cau= require('./xa_can_cau.png');
+export const trump= require('./trump 1.png');

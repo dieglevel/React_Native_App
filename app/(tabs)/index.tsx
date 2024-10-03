@@ -18,7 +18,7 @@ import Screen2_b from './lab_2/screen2_b';
 import Screen2_c from './lab_2/screen2_c';
 import Screen2_d from './lab_2/screen2_d';
 
-import Screen4_a from './screen4_a';
+import Screen4_a from './lab_4/screen4_a';
 import Screen3_Detail from './lab_3/screen3_detail';
 import Screen3_Choice from './lab_3/screen3_choice';
 
