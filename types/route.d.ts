@@ -18,6 +18,7 @@ type RootStackParamList = {
      Screen3_choice: {choice: String };
 
      Screen4_a: undefined;
+     Screen4_b: undefined;
 };
 
 declare global {

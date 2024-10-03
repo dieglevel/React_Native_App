@@ -19,3 +19,13 @@ export const trump= require('./trump 1.png');
 export const bi_cart_check = require('./bi_cart-check.png');
 export const goBack= require('./ant-design_arrow-left-outlined.png');
 export const Group_11 = require('./Group 11.png');
+
+export const giachuyen_1 = require('./giacchuyen 1.png');
+export const carbusbtop2 = require("./carbusbtops2 1.png");
+export const daucam1 = require("./daucam 1.png");
+export const dauchuyendoi1 = require("./dauchuyendoi 1.png");
+export const dauchuyendoipsps2 = require("./dauchuyendoipsps2 1.png");
+export const daynguon = require("./daynguon 1.png");
+
+export const disable_star = require("./Star 5.png");
+export const search = require("./whh_magnifier.png");
