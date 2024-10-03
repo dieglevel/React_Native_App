@@ -16,3 +16,6 @@ export const hieu_long_con_tre = require("./hieu_long_con_tre.png");
 export const lanh_dao_gian_don= require('./lanh_dao_gian_don.png');
 export const xa_can_cau= require('./xa_can_cau.png');
 export const trump= require('./trump 1.png');
+export const bi_cart_check = require('./bi_cart-check.png');
+export const goBack= require('./ant-design_arrow-left-outlined.png');
+export const Group_11 = require('./Group 11.png');

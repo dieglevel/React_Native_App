@@ -21,14 +21,17 @@ import Screen2_d from './lab_2/screen2_d';
 import Screen4_a from './lab_4/screen4_a';
 import Screen3_Detail from './lab_3/screen3_detail';
 import Screen3_Choice from './lab_3/screen3_choice';
+import { bi_cart_check, goBack } from '@/assets/images';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const CustomHeader = ({ navigation, route, options }: NativeStackHeaderProps) => {
+const CustomHeader = () => {
+  const navigation: NavigationProp<RootStackParamList> = useNavigation();
   return (
-    <View style={{marginTop: 30}}>
-      <TouchableOpacity onPress={() => navigation.goBack()}><Text>Back</Text></TouchableOpacity>
-      <Text >{route.name}</Text>
+    <View style={{ alignItems: 'center',marginTop: 30, backgroundColor: "rgba(27, 169, 255, 1)", width: "100%", flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, paddingVertical: 12 }}>
+      <TouchableOpacity onPress={() => navigation.goBack()}><Image source={goBack}></Image></TouchableOpacity>
+      <Text style={{ color: "white", fontSize: 30 }}>Chat</Text>
+      <Image source={bi_cart_check}></Image>
     </View>
   );
 };
@@ -39,7 +42,7 @@ export default function HomeScreen() {
     <View style={{ flex: 1, marginTop: -32 }}>
 
       <NavigationContainer independent={true} >
-        <Stack.Navigator initialRouteName='Homepage' screenOptions={{ header: (props) => <CustomHeader {...props} />}}>
+        <Stack.Navigator initialRouteName='Homepage'>
           <Stack.Screen name="Homepage" component={Homapage} />
           <Stack.Screen name='Screen1' component={Screen1} />
           <Stack.Screen name='Screen2' component={Screen2} />
@@ -55,10 +58,10 @@ export default function HomeScreen() {
           <Stack.Screen name='Screen2_c' component={Screen2_c} />
           <Stack.Screen name='Screen2_d' component={Screen2_d} />
 
-          <Stack.Screen name='Screen3_detail' component={Screen3_Detail}/>
+          <Stack.Screen name='Screen3_detail' component={Screen3_Detail} />
           <Stack.Screen name='Screen3_choice' component={Screen3_Choice} />
 
-          <Stack.Screen name='Screen4_a' component={Screen4_a} />
+          <Stack.Screen name='Screen4_a' component={Screen4_a} options={{header: (props) => <CustomHeader></CustomHeader>, }} />
 
         </Stack.Navigator>
       </NavigationContainer>
@@ -84,8 +87,11 @@ function Homapage() {
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_b") }}><Text style={styles.buttonText}>Screen2_b</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_c") }}><Text style={styles.buttonText}>Screen2_c</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_d") }}><Text style={styles.buttonText}>Screen2_d</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3_detail", {choice: "vs_blue"}) }}><Text style={styles.buttonText}>Screen3_detail</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3_detail", { choice: "vs_blue" }) }}><Text style={styles.buttonText}>Screen3_detail</Text></TouchableOpacity>
       <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_a") }}><Text style={styles.buttonText}>Screen4_a</Text></TouchableOpacity>
+
+
+
 
     </View>
   )
