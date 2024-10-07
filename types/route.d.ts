@@ -29,6 +29,7 @@ type RootStackParamList = {
      useMemoHook: {numbers: number[]};
 
      API_Screen_1: undefined;
+     API_Screen_2: undefined;
 };
 
 declare global {

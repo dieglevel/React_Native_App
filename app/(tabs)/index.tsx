@@ -31,6 +31,7 @@ import UseEffectFetchDataComponent from './hook/useEffectFetchData';
 import CountComponent from './hook/useReducer/countComponent';
 import UseMemoComponent from './hook/useMemo';
 import API_Screen_1 from './lab_5/API_Screen_1';
+import API_Screen_2 from './lab_5/API_Screen_2';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -66,7 +67,7 @@ export default function HomeScreen() {
     <View style={{ flex: 1, marginTop: -32 }}>
 
       <NavigationContainer independent={true} >
-        <Stack.Navigator initialRouteName='API_Screen_1'>
+        <Stack.Navigator initialRouteName='API_Screen_2'>
           <Stack.Screen name="Homepage" component={Homapage} />
           <Stack.Screen name='Screen1' component={Screen1} />
           <Stack.Screen name='Screen2' component={Screen2} />
@@ -96,6 +97,7 @@ export default function HomeScreen() {
           <Stack.Screen name='useMemoHook' component={UseMemoComponent}/>
 
           <Stack.Screen name='API_Screen_1' component={API_Screen_1}/>
+          <Stack.Screen name='API_Screen_2' component={API_Screen_2}/>
 
         </Stack.Navigator>
       </NavigationContainer>
@@ -148,6 +150,7 @@ function Homapage() {
 
       <View style={styles.component}>
 <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("API_Screen_1") }}><Text style={styles.buttonText}>API_Screen_1</Text></TouchableOpacity>
+<TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("API_Screen_2") }}><Text style={styles.buttonText}>API_Screen_2</Text></TouchableOpacity>
       </View>
 
 
