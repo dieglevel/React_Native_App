@@ -29,3 +29,6 @@ export const daynguon = require("./daynguon 1.png");
 
 export const disable_star = require("./Star 5.png");
 export const search = require("./whh_magnifier.png");
+
+export const gmail_icon = require("./Frame.png");
+export const todo_app = require("./Image 95.png")
