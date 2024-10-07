@@ -7,7 +7,7 @@ interface Idata {
     length: number;
 }
 
-const useEffectFetchDataComponent = () => {
+const UseEffectFetchDataComponent = () => {
     const [data, setData] = useState<Idata>();
 
         useEffect(() => {
@@ -29,4 +29,4 @@ const useEffectFetchDataComponent = () => {
     );
 };
 
-export default useEffectFetchDataComponent;
+export default UseEffectFetchDataComponent;
