@@ -27,6 +27,7 @@ import UseStateComponent from './hook/useState';
 import UseEffectComponent from './hook/useEffect';
 import UseEffectOneTimeComponent from './hook/useEffectOneTime';
 import UseEffectDependencyComponent from './hook/useEffectDependency';
+import useEffectFetchDataComponent from './hook/useEffectFetchData';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -88,6 +89,7 @@ export default function HomeScreen() {
           <Stack.Screen name='useEffectHook' component={UseEffectComponent} />
           <Stack.Screen name='useEffectOneTimeHook' component={UseEffectOneTimeComponent} />
           <Stack.Screen name='useEffectDependencyHook' component={UseEffectDependencyComponent} />
+          <Stack.Screen name='useEffectFetchDataHook' component={useEffectFetchDataComponent} />
 
         </Stack.Navigator>
       </NavigationContainer>
@@ -133,6 +135,7 @@ function Homapage() {
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectHook") }}><Text style={styles.buttonText}>useEffectHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectOneTimeHook") }}><Text style={styles.buttonText}>useEffectOneTimeHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectDependencyHook") }}><Text style={styles.buttonText}>useEffectDependencyHook</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectFetchDataHook") }}><Text style={styles.buttonText}>useEffectFetchDataHook</Text></TouchableOpacity>
       </View>
 
 
