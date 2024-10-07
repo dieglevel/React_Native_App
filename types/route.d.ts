@@ -26,6 +26,7 @@ type RootStackParamList = {
      useEffectDependencyHook: undefined;
      useEffectFetchDataHook: undefined;
      useReducerHook: undefined;
+     useMemoHook: {numbers: number[]};
 };
 
 declare global {
