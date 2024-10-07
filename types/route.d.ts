@@ -23,6 +23,7 @@ type RootStackParamList = {
      useStateHook: undefined;
      useEffectHook: undefined;
      useEffectOneTimeHook: undefined;
+     useEffectDependencyHook: undefined;
 };
 
 declare global {

@@ -26,6 +26,7 @@ import Screen4_b from './lab_4/screen4_b';
 import UseStateComponent from './hook/useState';
 import UseEffectComponent from './hook/useEffect';
 import UseEffectOneTimeComponent from './hook/useEffectOneTime';
+import UseEffectDependencyComponent from './hook/useEffectDependency';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -86,6 +87,7 @@ export default function HomeScreen() {
           <Stack.Screen name='useStateHook' component={UseStateComponent} />
           <Stack.Screen name='useEffectHook' component={UseEffectComponent} />
           <Stack.Screen name='useEffectOneTimeHook' component={UseEffectOneTimeComponent} />
+          <Stack.Screen name='useEffectDependencyHook' component={UseEffectDependencyComponent} />
 
         </Stack.Navigator>
       </NavigationContainer>
@@ -130,6 +132,7 @@ function Homapage() {
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useStateHook") }}><Text style={styles.buttonText}>useStateHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectHook") }}><Text style={styles.buttonText}>useEffectHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectOneTimeHook") }}><Text style={styles.buttonText}>useEffectOneTimeHook</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectDependencyHook") }}><Text style={styles.buttonText}>useEffectDependencyHook</Text></TouchableOpacity>
       </View>
 
 
