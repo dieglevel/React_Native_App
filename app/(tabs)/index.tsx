@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, View, Text, TouchableOpacity, Button, Pressable } from 'react-native';
+import { Image, StyleSheet, Platform, View, Text, TouchableOpacity, Button, Pressable, ScrollView } from 'react-native';
 
 import { NavigationContainer, NavigationProp, TabRouter, useNavigation, useNavigationBuilder } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackHeaderProps } from '@react-navigation/native-stack';
@@ -23,13 +23,16 @@ import Screen3_Detail from './lab_3/screen3_detail';
 import Screen3_Choice from './lab_3/screen3_choice';
 import { bi_cart_check, goBack, search } from '@/assets/images';
 import Screen4_b from './lab_4/screen4_b';
+import UseStateComponent from './hook/useState';
+import UseEffectComponent from './hook/useEffect';
+import UseEffectOneTimeComponent from './hook/useEffectOneTime';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const CustomHeader = () => {
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
   return (
-    <View style={{ alignItems: 'center',marginTop: 30, backgroundColor: "rgba(27, 169, 255, 1)", width: "100%", flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, paddingVertical: 12 }}>
+    <View style={{ alignItems: 'center', marginTop: 30, backgroundColor: "rgba(27, 169, 255, 1)", width: "100%", flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, paddingVertical: 12 }}>
       <TouchableOpacity onPress={() => navigation.goBack()}><Image source={goBack}></Image></TouchableOpacity>
       <Text style={{ color: "white", fontSize: 30 }}>Chat</Text>
       <Image source={bi_cart_check}></Image>
@@ -42,12 +45,12 @@ const CustomHeader2 = () => {
   return (
     <View style={{ alignItems: 'center', marginTop: 30, backgroundColor: "rgba(27, 169, 255, 1)", width: "100%", flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, paddingVertical: 12 }}>
       <TouchableOpacity onPress={() => navigation.goBack()}><Image source={goBack}></Image></TouchableOpacity>
-      <TouchableOpacity style={{backgroundColor: "white", flexDirection:"row", gap: 10, padding: 10, width: "55%", justifyContent: "flex-start", alignItems: 'center'}}>
+      <TouchableOpacity style={{ backgroundColor: "white", flexDirection: "row", gap: 10, padding: 10, width: "55%", justifyContent: "flex-start", alignItems: 'center' }}>
         <Image source={search}></Image>
         <Text>Dây cáp usb</Text>
       </TouchableOpacity>
       <Image source={bi_cart_check}></Image>
-      <Text style={{color: "white", fontWeight: "bold", fontSize: 30, marginBottom: 10}}>...</Text>
+      <Text style={{ color: "white", fontWeight: "bold", fontSize: 30, marginBottom: 10 }}>...</Text>
     </View>
   );
 };
@@ -78,7 +81,11 @@ export default function HomeScreen() {
           <Stack.Screen name='Screen3_choice' component={Screen3_Choice} />
 
           <Stack.Screen name='Screen4_a' component={Screen4_a} options={{ header: (props) => <CustomHeader></CustomHeader>, }} />
-          <Stack.Screen name='Screen4_b' component={Screen4_b} options={{header: (props) => <CustomHeader2></CustomHeader2>, }} />
+          <Stack.Screen name='Screen4_b' component={Screen4_b} options={{ header: (props) => <CustomHeader2></CustomHeader2>, }} />
+
+          <Stack.Screen name='useStateHook' component={UseStateComponent} />
+          <Stack.Screen name='useEffectHook' component={UseEffectComponent} />
+          <Stack.Screen name='useEffectOneTimeHook' component={UseEffectOneTimeComponent} />
 
         </Stack.Navigator>
       </NavigationContainer>
@@ -90,32 +97,56 @@ export default function HomeScreen() {
 function Homapage() {
   const navigation: NavigationProp<RootStackParamList> = useNavigation();
   return (
-    <View style={[styles.mainContainer, { backgroundColor: "white" }]}>
+    <ScrollView style={[{ backgroundColor: "white", gap: 10, flex: 1 }]}>
       <TouchableOpacity style={styles.buttonDescrete} ><Text style={styles.buttonText}>Homepage</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen1") }}><Text style={styles.buttonText}>Screen1</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2") }}><Text style={styles.buttonText}>Screen2</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3") }}><Text style={styles.buttonText}>Screen3</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4") }}><Text style={styles.buttonText}>Screen4</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen5") }}><Text style={styles.buttonText}>Screen5</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen6") }}><Text style={styles.buttonText}>Screen6</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen7") }}><Text style={styles.buttonText}>Screen7</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen8") }}><Text style={styles.buttonText}>Screen8</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_a") }}><Text style={styles.buttonText}>Screen2_a</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_b") }}><Text style={styles.buttonText}>Screen2_b</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_c") }}><Text style={styles.buttonText}>Screen2_c</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_d") }}><Text style={styles.buttonText}>Screen2_d</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3_detail", { choice: "vs_blue" }) }}><Text style={styles.buttonText}>Screen3_detail</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_a") }}><Text style={styles.buttonText}>Screen4_a</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_b") }}><Text style={styles.buttonText}>Screen4_b</Text></TouchableOpacity>
+
+      <View style={styles.component}>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen1") }}><Text style={styles.buttonText}>Screen1</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2") }}><Text style={styles.buttonText}>Screen2</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3") }}><Text style={styles.buttonText}>Screen3</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4") }}><Text style={styles.buttonText}>Screen4</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen5") }}><Text style={styles.buttonText}>Screen5</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen6") }}><Text style={styles.buttonText}>Screen6</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen7") }}><Text style={styles.buttonText}>Screen7</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen8") }}><Text style={styles.buttonText}>Screen8</Text></TouchableOpacity>
+      </View>
+
+      <View style={styles.component}>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_a") }}><Text style={styles.buttonText}>Screen2_a</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_b") }}><Text style={styles.buttonText}>Screen2_b</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_c") }}><Text style={styles.buttonText}>Screen2_c</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_d") }}><Text style={styles.buttonText}>Screen2_d</Text></TouchableOpacity>
+      </View>
+      <View style={styles.component}>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3_detail", { choice: "vs_blue" }) }}><Text style={styles.buttonText}>Screen3_detail</Text></TouchableOpacity>
+      </View>
+
+      <View style={styles.component}>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_a") }}><Text style={styles.buttonText}>Screen4_a</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_b") }}><Text style={styles.buttonText}>Screen4_b</Text></TouchableOpacity>
+      </View>
+
+      <View style={styles.component}>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useStateHook") }}><Text style={styles.buttonText}>useStateHook</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectHook") }}><Text style={styles.buttonText}>useEffectHook</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectOneTimeHook") }}><Text style={styles.buttonText}>useEffectOneTimeHook</Text></TouchableOpacity>
+      </View>
 
 
 
-
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
+  component: {
+    padding: 20,
+    borderWidth: 2,
+    marginVertical: 10,
+    marginHorizontal: 5,
+    borderRadius: 15,
+    borderColor: "rgba(128, 128, 128, 1)",
+  },
   main: {
     flex: 1,
     backgroundColor: "rgba(196, 196, 196, 1)",
@@ -175,7 +206,8 @@ const styles = StyleSheet.create({
     backgroundColor: "green",
     color: "white",
     borderRadius: 5,
-    width: "70%",
+    marginHorizontal: 10,
+    marginVertical: 5,
     paddingHorizontal: 10,
     paddingVertical: 5,
     alignItems: "center",

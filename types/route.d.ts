@@ -19,6 +19,10 @@ type RootStackParamList = {
 
      Screen4_a: undefined;
      Screen4_b: undefined;
+
+     useStateHook: undefined;
+     useEffectHook: undefined;
+     useEffectOneTimeHook: undefined;
 };
 
 declare global {
