@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, View, Text, TouchableOpacity, Button, Pressable, ScrollView } from 'react-native';
+import { Image, StyleSheet, Platform, View, Text, TouchableOpacity, Pressable, ScrollView } from 'react-native';
 
 import { NavigationContainer, NavigationProp, TabRouter, useNavigation, useNavigationBuilder } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackHeaderProps } from '@react-navigation/native-stack';
@@ -30,6 +30,10 @@ import UseEffectDependencyComponent from './hook/useEffectDependency';
 import UseEffectFetchDataComponent from './hook/useEffectFetchData';
 import CountComponent from './hook/useReducer/countComponent';
 import UseMemoComponent from './hook/useMemo';
+import { Button } from 'react-native-paper';
+import { createContext, useState } from 'react';
+import { Context, IContextData, IContextDataProps } from '@/types/context/context';
+import UseContext from './hook/useContext';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -60,10 +64,22 @@ const CustomHeader2 = () => {
 };
 
 export default function HomeScreen() {
+  const [contextData, setContextData] = useState<IContextData>({
+    title: "Hello Context",
+    name: "Thử nghiệm Context"
+  })
+
+  const contextProvider: IContextDataProps = {
+    data: contextData,
+    setData: (data: IContextData) => {
+      setContextData(data);
+    }
+  }
 
   return (
-    <View style={{ flex: 1, marginTop: -32 }}>
 
+    <View style={{ flex: 1, marginTop: -32 }}>
+      <Context.Provider value={contextProvider}>
       <NavigationContainer independent={true} >
         <Stack.Navigator initialRouteName='Homepage'>
           <Stack.Screen name="Homepage" component={Homapage} />
@@ -92,11 +108,12 @@ export default function HomeScreen() {
           <Stack.Screen name='useEffectOneTimeHook' component={UseEffectOneTimeComponent} />
           <Stack.Screen name='useEffectDependencyHook' component={UseEffectDependencyComponent} />
           <Stack.Screen name='useReducerHook' component={CountComponent} />
-          <Stack.Screen name='useMemoHook' component={UseMemoComponent}/>
+          <Stack.Screen name='useMemoHook' component={UseMemoComponent} />
+          <Stack.Screen name='useContext' component={UseContext} />
 
         </Stack.Navigator>
       </NavigationContainer>
-
+      </Context.Provider>
     </View>
   );
 }
@@ -108,6 +125,7 @@ function Homapage() {
       <TouchableOpacity style={styles.buttonDescrete} ><Text style={styles.buttonText}>Homepage</Text></TouchableOpacity>
 
       <View style={styles.component}>
+        <Text style={{ justifyContent: 'center', alignContent: 'center', fontSize: 30, fontWeight: "700", textAlign: 'center' }}>Lab 1</Text>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen1") }}><Text style={styles.buttonText}>Screen1</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2") }}><Text style={styles.buttonText}>Screen2</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3") }}><Text style={styles.buttonText}>Screen3</Text></TouchableOpacity>
@@ -119,28 +137,34 @@ function Homapage() {
       </View>
 
       <View style={styles.component}>
+        <Text style={{ justifyContent: 'center', alignContent: 'center', fontSize: 30, fontWeight: "700", textAlign: 'center' }}>Lab 2</Text>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_a") }}><Text style={styles.buttonText}>Screen2_a</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_b") }}><Text style={styles.buttonText}>Screen2_b</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_c") }}><Text style={styles.buttonText}>Screen2_c</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen2_d") }}><Text style={styles.buttonText}>Screen2_d</Text></TouchableOpacity>
       </View>
       <View style={styles.component}>
+        <Text style={{ justifyContent: 'center', alignContent: 'center', fontSize: 30, fontWeight: "700", textAlign: 'center' }}>Lab 3</Text>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen3_detail", { choice: "vs_blue" }) }}><Text style={styles.buttonText}>Screen3_detail</Text></TouchableOpacity>
       </View>
 
       <View style={styles.component}>
+        <Text style={{ justifyContent: 'center', alignContent: 'center', fontSize: 30, fontWeight: "700", textAlign: 'center' }}>Lab 4</Text>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_a") }}><Text style={styles.buttonText}>Screen4_a</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Screen4_b") }}><Text style={styles.buttonText}>Screen4_b</Text></TouchableOpacity>
       </View>
 
       <View style={styles.component}>
+        <Text style={{ justifyContent: 'center', alignContent: 'center', fontSize: 30, fontWeight: "700", textAlign: 'center' }}>Hook</Text>
+
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useStateHook") }}><Text style={styles.buttonText}>useStateHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectHook") }}><Text style={styles.buttonText}>useEffectHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectOneTimeHook") }}><Text style={styles.buttonText}>useEffectOneTimeHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectDependencyHook") }}><Text style={styles.buttonText}>useEffectDependencyHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectFetchDataHook") }}><Text style={styles.buttonText}>useEffectFetchDataHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useReducerHook") }}><Text style={styles.buttonText}>useReducerHook</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useMemoHook", {numbers: [1,2,3]}) }}><Text style={styles.buttonText}>useMemoHook</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useMemoHook", { numbers: [1, 2, 3] }) }}><Text style={styles.buttonText}>useMemoHook</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useContext")}}><Text style={styles.buttonText}>useContext</Text></TouchableOpacity>
       </View>
 
 
@@ -152,11 +176,10 @@ function Homapage() {
 const styles = StyleSheet.create({
   component: {
     padding: 20,
-    borderWidth: 2,
     marginVertical: 10,
-    marginHorizontal: 5,
+    marginHorizontal: 10,
     borderRadius: 15,
-    borderColor: "rgba(128, 128, 128, 1)",
+    backgroundColor: "lightgray",
   },
   main: {
     flex: 1,
@@ -214,11 +237,11 @@ const styles = StyleSheet.create({
     gap: 10
   },
   buttonDescrete: {
-    backgroundColor: "green",
-    color: "white",
+    borderColor: "red",
+    borderWidth: 3,
     borderRadius: 5,
     marginHorizontal: 10,
-    marginVertical: 5,
+    marginVertical: 10,
     paddingHorizontal: 10,
     paddingVertical: 5,
     alignItems: "center",
@@ -226,7 +249,7 @@ const styles = StyleSheet.create({
 
   },
   buttonText: {
-    color: "white",
+    color: "red",
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center"
