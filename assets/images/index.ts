@@ -37,3 +37,5 @@ export const avatar = require("./Frame (1).png")
 export const search_2 = require("./Frame (2).png")
 export const tick =require("./Frame (3).png")
 export const edit_2 = require("./Frame (4).png")
+
+export const edit = require("./edit.png")

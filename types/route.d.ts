@@ -1,3 +1,5 @@
+import { IData } from "@/app/(tabs)/lab_5/API_Screen_2";
+
 type RootStackParamList = {
      Homepage: undefined;
      Screen1: undefined;
@@ -30,7 +32,14 @@ type RootStackParamList = {
      useContext: undefined
 
      API_Screen_1: undefined;
-     API_Screen_2: undefined;
+     API_Screen_2: {
+          user: string
+     };
+     API_Screen_3: {
+          data?: IData;
+          type: "Add" | "Edit";
+          user: string;
+     }
 };
 
 declare global {

@@ -36,6 +36,7 @@ import { Context, IContextData, IContextDataProps } from '@/types/context/contex
 import UseContext from './hook/useContext';
 import API_Screen_1 from './lab_5/API_Screen_1';
 import API_Screen_2 from './lab_5/API_Screen_2';
+import API_Screen_3 from './lab_5/API_Screen_3';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -82,42 +83,43 @@ export default function HomeScreen() {
 
     <View style={{ flex: 1, marginTop: -32 }}>
       <Context.Provider value={contextProvider}>
-      <NavigationContainer independent={true} >
-        <Stack.Navigator initialRouteName='API_Screen_2'>
-          <Stack.Screen name="Homepage" component={Homapage} />
-          <Stack.Screen name='Screen1' component={Screen1} />
-          <Stack.Screen name='Screen2' component={Screen2} />
-          <Stack.Screen name='Screen3' component={Screen3} />
-          <Stack.Screen name='Screen4' component={Screen4} />
-          <Stack.Screen name='Screen5' component={Screen5} />
-          <Stack.Screen name='Screen6' component={Screen6} />
-          <Stack.Screen name='Screen7' component={Screen7} />
-          <Stack.Screen name='Screen8' component={Screen8} />
+        <NavigationContainer independent={true} >
+          <Stack.Navigator initialRouteName='Homepage'>
+            <Stack.Screen name="Homepage" component={Homapage} />
+            <Stack.Screen name='Screen1' component={Screen1} />
+            <Stack.Screen name='Screen2' component={Screen2} />
+            <Stack.Screen name='Screen3' component={Screen3} />
+            <Stack.Screen name='Screen4' component={Screen4} />
+            <Stack.Screen name='Screen5' component={Screen5} />
+            <Stack.Screen name='Screen6' component={Screen6} />
+            <Stack.Screen name='Screen7' component={Screen7} />
+            <Stack.Screen name='Screen8' component={Screen8} />
 
-          <Stack.Screen name='Screen2_a' component={Screen2_a} />
-          <Stack.Screen name='Screen2_b' component={Screen2_b} />
-          <Stack.Screen name='Screen2_c' component={Screen2_c} />
-          <Stack.Screen name='Screen2_d' component={Screen2_d} />
+            <Stack.Screen name='Screen2_a' component={Screen2_a} />
+            <Stack.Screen name='Screen2_b' component={Screen2_b} />
+            <Stack.Screen name='Screen2_c' component={Screen2_c} />
+            <Stack.Screen name='Screen2_d' component={Screen2_d} />
 
-          <Stack.Screen name='Screen3_detail' component={Screen3_Detail} />
-          <Stack.Screen name='Screen3_choice' component={Screen3_Choice} />
+            <Stack.Screen name='Screen3_detail' component={Screen3_Detail} />
+            <Stack.Screen name='Screen3_choice' component={Screen3_Choice} />
 
-          <Stack.Screen name='Screen4_a' component={Screen4_a} options={{ header: (props) => <CustomHeader></CustomHeader>, }} />
-          <Stack.Screen name='Screen4_b' component={Screen4_b} options={{ header: (props) => <CustomHeader2></CustomHeader2>, }} />
+            <Stack.Screen name='Screen4_a' component={Screen4_a} options={{ header: (props) => <CustomHeader></CustomHeader>, }} />
+            <Stack.Screen name='Screen4_b' component={Screen4_b} options={{ header: (props) => <CustomHeader2></CustomHeader2>, }} />
 
-          <Stack.Screen name='useStateHook' component={UseStateComponent} />
-          <Stack.Screen name='useEffectHook' component={UseEffectComponent} />
-          <Stack.Screen name='useEffectOneTimeHook' component={UseEffectOneTimeComponent} />
-          <Stack.Screen name='useEffectDependencyHook' component={UseEffectDependencyComponent} />
-          <Stack.Screen name='useReducerHook' component={CountComponent} />
-          <Stack.Screen name='useMemoHook' component={UseMemoComponent} />
-          <Stack.Screen name='useContext' component={UseContext} />
+            <Stack.Screen name='useStateHook' component={UseStateComponent} />
+            <Stack.Screen name='useEffectHook' component={UseEffectComponent} />
+            <Stack.Screen name='useEffectOneTimeHook' component={UseEffectOneTimeComponent} />
+            <Stack.Screen name='useEffectDependencyHook' component={UseEffectDependencyComponent} />
+            <Stack.Screen name='useReducerHook' component={CountComponent} />
+            <Stack.Screen name='useMemoHook' component={UseMemoComponent} />
+            <Stack.Screen name='useContext' component={UseContext} />
 
-          <Stack.Screen name='API_Screen_1' component={API_Screen_1}/>
-          <Stack.Screen name='API_Screen_2' component={API_Screen_2}/>
+            <Stack.Screen name='API_Screen_1' component={API_Screen_1} />
+            <Stack.Screen name='API_Screen_2' component={API_Screen_2} />
+            <Stack.Screen name='API_Screen_3' component={API_Screen_3} />
 
-        </Stack.Navigator>
-      </NavigationContainer>
+          </Stack.Navigator>
+        </NavigationContainer>
       </Context.Provider>
     </View>
   );
@@ -169,12 +171,11 @@ function Homapage() {
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useEffectFetchDataHook") }}><Text style={styles.buttonText}>useEffectFetchDataHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useReducerHook") }}><Text style={styles.buttonText}>useReducerHook</Text></TouchableOpacity>
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useMemoHook", { numbers: [1, 2, 3] }) }}><Text style={styles.buttonText}>useMemoHook</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useContext")}}><Text style={styles.buttonText}>useContext</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("useContext") }}><Text style={styles.buttonText}>useContext</Text></TouchableOpacity>
       </View>
 
       <View style={styles.component}>
-<TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("API_Screen_1") }}><Text style={styles.buttonText}>API_Screen_1</Text></TouchableOpacity>
-<TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("API_Screen_2") }}><Text style={styles.buttonText}>API_Screen_2</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("API_Screen_1") }}><Text style={styles.buttonText}>API_Screen_1</Text></TouchableOpacity>
       </View>
 
 

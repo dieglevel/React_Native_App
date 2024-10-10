@@ -6,25 +6,33 @@ import { FlatList, Image, Text, TextInput, TouchableOpacity, View } from "react-
 import { Button } from "react-native-paper";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
-interface IData {
+export interface IData {
+    user: string;
     id: string;
     title: string;
-    handleUpdate: (id: string) => void;
+    handleUpdate: (id: string, title: string) => void;
     handleDelete: (id: string) => void;
 }
 
 const API_Screen_2 = () => {
-    const [user, setUser] = useState<string>("Twinkle");
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const route = useRoute<RouteProp<RootStackParamList, "API_Screen_2">>();
+    const [user, setUser] = useState<string>(route.params?.user ? route.params.user : "");
     const [data, setData] = useState<IData[]>([]);
 
-
-    const handleAdd = () => {
-
+    const handleEdit = async (id: string, title: string) => {
+        const response = await fetch(`https://6703aa81ab8a8f8927311ee8.mockapi.io/ToDo/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ title: title })
+        });
+        if (response.ok) {
+            console.log("Edit success");
+        }
     }
-
-    const handleEdit = (id: string) => {
-
-    }
+        
     const handleDelete = async (id: string) => {
         const response = await fetch(`https://6703aa81ab8a8f8927311ee8.mockapi.io/ToDo/${id}`, {
             method: "DELETE"
@@ -41,10 +49,9 @@ const API_Screen_2 = () => {
             setData(data);
         }
         getData();
-    }, [handleDelete])
+    }, [handleDelete, handleEdit]);
 
-    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-    const route = useRoute<RouteProp<RootStackParamList, "Screen3_choice">>();
+
     return (
         <View style={{ justifyContent: "flex-start", alignItems: "center", gap: 40 }}>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "100%", paddingHorizontal: 30 }}>
@@ -61,20 +68,20 @@ const API_Screen_2 = () => {
             </View>
 
             <View style={{ width: "100%", paddingHorizontal: 30 }}>
-                <View style={{ width: "100%" }}>
-                    <View style={{ flexDirection: "row", flex: 1, padding: 10, marginHorizontal: 10, borderRadius: 5, justifyContent: "center", alignContent: "center", gap: 10, borderWidth: 2 }}>
-                        <Image source={search_2}></Image>
+                <View style={{ width: "100%", }}>
+                    <View style={{ flexDirection: "row", padding: 10, marginHorizontal: 10, borderRadius: 5, justifyContent: "center", alignItems: "center", gap: 10, borderWidth: 1 }}>
+                        <Image source={search_2} style={{ width: 20, height: 20 }}></Image>
                         <TextInput style={{ flex: 1 }} placeholder="Search" />
                     </View>
                 </View>
             </View>
 
             <FlatList style={{ width: "100%", marginHorizontal: "auto" }} data={data} renderItem={
-                (temp) => <RenderItem id={temp.item.id} title={temp.item.title} handleDelete={handleDelete} handleUpdate={handleEdit}></RenderItem>}>
+                (temp) => <RenderItem user={user} id={temp.item.id} title={temp.item.title} handleDelete={handleDelete} handleUpdate={handleEdit}></RenderItem>}>
 
             </FlatList>
 
-            <TouchableOpacity style={{ borderRadius: 30, justifyContent: "center", alignItems: "center", width: 60, height: 60, backgroundColor: "rgba(0, 189, 214, 1)", borderColor: "rgba(0, 189, 214, 1)" }}>
+            <TouchableOpacity onPress={() => { navigation.navigate("API_Screen_3", { user: user, type: "Add" }) }} style={{ borderRadius: 30, justifyContent: "center", alignItems: "center", width: 60, height: 60, backgroundColor: "rgba(0, 189, 214, 1)", borderColor: "rgba(0, 189, 214, 1)" }}>
                 <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "700" }}>{"+"}</Text>
             </TouchableOpacity>
 
@@ -82,23 +89,27 @@ const API_Screen_2 = () => {
     );
 }
 
-const RenderItem = (data: IData) => {
-
-    const handleDelete = async (id: string) => {
-        const response = await fetch(`https://6703aa81ab8a8f8927311ee8.mockapi.io/ToDo/${id}`, {
-            method: "DELETE"
-        });
-        if (response.ok) {
-            console.log("Delete success");
-        }
-    }
+const RenderItem = (dataInput: IData) => {
+    const navigate = useNavigation<NavigationProp<RootStackParamList>>();
     return (
-        <View style={{borderRadius: 15, marginTop: 10, width: "70%", marginHorizontal: "auto", padding: 10, paddingHorizontal: 10, alignItems: "center", justifyContent: "space-between", flexDirection: "row", gap: 10, backgroundColor: "rgba(222, 225, 230, 0.47)", shadowColor: "rgba(23, 26, 31, 0.15)", shadowOpacity: 1 }}>
+        <View style={{ borderRadius: 15, marginTop: 10, width: "90%", marginHorizontal: "auto", padding: 10, paddingHorizontal: 10, alignItems: "center", justifyContent: "space-between", flexDirection: "row", gap: 10, backgroundColor: "rgba(222, 225, 230, 0.47)", shadowColor: "rgba(23, 26, 31, 0.15)", shadowOpacity: 1 }}>
             <View style={{ flexDirection: "row", gap: 10 }}>
-                <TouchableOpacity onPress={() => {data.handleUpdate(data.id)}}><Image source={tick}></Image></TouchableOpacity>
-                <Text style={{ textAlign: "center", fontWeight: "700", fontSize: 15 }}>{data.title}</Text>
+                <TouchableOpacity><Image source={tick}></Image></TouchableOpacity>
+                <Text style={{ textAlign: "center", fontWeight: "700", fontSize: 15 }}>{dataInput.title}</Text>
             </View>
-            <TouchableOpacity onPress={() => {handleDelete(data.id)}}><Image source={edit_2}></Image></TouchableOpacity>
+            <TouchableOpacity 
+            onPress={() => { 
+                navigate.navigate("API_Screen_3", {
+                     type: "Edit", 
+                     user: dataInput.user, 
+                     data: { 
+                        id: dataInput.id,
+                        title: dataInput.title,
+                        handleUpdate: dataInput.handleUpdate, 
+                        handleDelete: dataInput.handleDelete,
+                        user: dataInput.user
+                        } 
+                        }) }}><Image source={edit_2}></Image></TouchableOpacity>
         </View>
     )
 }
