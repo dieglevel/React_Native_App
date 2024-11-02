@@ -38,6 +38,12 @@ import API_Screen_1 from './lab_5/API_Screen_1';
 import API_Screen_2 from './lab_5/API_Screen_2';
 import API_Screen_3 from './lab_5/API_Screen_3';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Redex_Screen_1 from './lab_5_redux/Redux_Screen_1';
+import { Provider } from 'react-redux';
+import { store } from '@/types/redux/store';
+import Redex_Screen_2 from './lab_5_redux/Redux_Screen_2';
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const CustomHeader = () => {
@@ -82,6 +88,7 @@ export default function HomeScreen() {
   return (
 
     <View style={{ flex: 1, marginTop: -32 }}>
+      <Provider store={store}>
       <Context.Provider value={contextProvider}>
         <NavigationContainer independent={true} >
           <Stack.Navigator initialRouteName='Homepage'>
@@ -94,6 +101,7 @@ export default function HomeScreen() {
             <Stack.Screen name='Screen6' component={Screen6} />
             <Stack.Screen name='Screen7' component={Screen7} />
             <Stack.Screen name='Screen8' component={Screen8} />
+            
 
             <Stack.Screen name='Screen2_a' component={Screen2_a} />
             <Stack.Screen name='Screen2_b' component={Screen2_b} />
@@ -118,9 +126,13 @@ export default function HomeScreen() {
             <Stack.Screen name='API_Screen_2' component={API_Screen_2} />
             <Stack.Screen name='API_Screen_3' component={API_Screen_3} />
 
+              <Stack.Screen name='Redux_Screen_1' component={Redex_Screen_1} />
+              <Stack.Screen name='Redux_Screen_2' component={Redex_Screen_2} />
+
           </Stack.Navigator>
         </NavigationContainer>
       </Context.Provider>
+      </Provider>
     </View>
   );
 }
@@ -175,7 +187,15 @@ function Homapage() {
       </View>
 
       <View style={styles.component}>
+        <Text style={{ justifyContent: 'center', alignContent: 'center', fontSize: 30, fontWeight: "700", textAlign: 'center' }}>Lab_5</Text>
+
         <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("API_Screen_1") }}><Text style={styles.buttonText}>API_Screen_1</Text></TouchableOpacity>
+      </View>
+
+      <View style={styles.component}>
+        <Text style={{ justifyContent: 'center', alignContent: 'center', fontSize: 30, fontWeight: "700", textAlign: 'center' }}>Lab_5_Redux</Text>
+
+        <TouchableOpacity style={styles.buttonDescrete} onPress={() => { navigation.navigate("Redux_Screen_1") }}><Text style={styles.buttonText}>Redux_Screen_1</Text></TouchableOpacity>
       </View>
 
 

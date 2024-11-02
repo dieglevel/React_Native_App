@@ -1,4 +1,5 @@
 import { IData } from "@/app/(tabs)/lab_5/API_Screen_2";
+import { ITodo } from "./redux/reduxs/todoRedux";
 
 type RootStackParamList = {
      Homepage: undefined;
@@ -39,6 +40,13 @@ type RootStackParamList = {
           data?: IData;
           type: "Add" | "Edit";
           user: string;
+     }
+
+     Redux_Screen_1: undefined;
+     Redux_Screen_2: {
+          user: string;
+          data?: ITodo;
+          type: "Add" | "Edit";
      }
 };
 

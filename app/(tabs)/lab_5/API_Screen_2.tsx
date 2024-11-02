@@ -26,7 +26,7 @@ const API_Screen_2 = () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ title: title })
+            body: JSON.stringify({ title: title }),
         });
         if (response.ok) {
             console.log("Edit success");
